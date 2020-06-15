@@ -132,7 +132,7 @@
 				<!-- nps lands legend element -->
 				<rect x="10" y="120" width="30" height="20" style="fill: #ed1c24"/>
 				<text x="48" y="135" style="font-size: 12px; font-family: 'fairplex';">Closed</text>
-				<text x="14" y="164" style="font-size: 12px; font-family: 'verlag';">Map updated 6/5/2020</text>
+				<text x="14" y="164" style="font-size: 12px; font-family: 'verlag';">Map updated 6/15/2020</text>
 			</svg>		
 
 	  </div>
@@ -242,7 +242,7 @@
 					});
 
 					//	 create template literal for tooltip  
-					popup = `<b>${feature.properties.SITE_NAME}</b><br>Closure Status: <b>${feature.properties.ClosStat}</b>`
+					popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b>`
 
 					layer.bindTooltip(popup)
 				}
@@ -292,7 +292,7 @@
 					});
 
 					//   create template literal for tooltip
-					var popup = `<b>${feature.properties.SITE_NAME}</b><br>Closure Status: <b>${feature.properties.ClosStat}</b><br>${feature.properties.ResType}</a></p>`;
+					var popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b><br>${feature.properties.ResType}</a></p>`;
 	
 				layer.bindTooltip(popup)
 					}
@@ -340,7 +340,7 @@
 					});
 
 					//	 create template literal for tooltip  
-					popup = `<b>${feature.properties.SITE_NAME}</b><br>Closure Status: <b>${feature.properties.ClosStat}</b>`
+					popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b>`
 
 					layer.bindTooltip(popup)
 				}
@@ -387,7 +387,7 @@
 					});
 
 					//	 create template literal for tooltip  
-					popup = `<b>${feature.properties.SITE_NAME}</b><br>Closure Status: <b>${feature.properties.ClosStat}</b>`
+					popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b>`
 
 					layer.bindTooltip(popup)
 				}
