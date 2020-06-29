@@ -132,7 +132,7 @@
 				<!-- nps lands legend element -->
 				<rect x="10" y="120" width="30" height="20" style="fill: #ed1c24"/>
 				<text x="48" y="135" style="font-size: 12px; font-family: 'fairplex';">Closed</text>
-				<text x="14" y="164" style="font-size: 12px; font-family: 'verlag';">Map updated 6/15/2020</text>
+				<text x="14" y="164" style="font-size: 12px; font-family: 'verlag';">Map updated 6/29/2020</text>
 			</svg>		
 
 	  </div>
@@ -163,44 +163,44 @@
 	}
 
 	// create a Leaflet map in our division container with id of 'map'
-	var map = L.map('map', options);
+			var map = L.map('map', options);
 
-	// Get basemap URL from Leaflet Providers
-	var basemap_url = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+			// Get basemap URL from Leaflet Providers
+			var basemap_url = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
 
-	// Get basemap attributes from Leaflet Providers
-	var basemap_attributes = {
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	subdomains: 'abcd',
-	maxZoom: 19
-	};
-	// requests some map tiles
-	var tiles = L.tileLayer(basemap_url, basemap_attributes);
-	
-	map.addLayer(tiles);
-
-	var styles = {
-		weight: 1,
-		stroke: 1,
-		fillOpacity: .4
-	}
-
-		// add state outline
-	var countyLayer = L.geoJson(county, {
-
-		style: function (feature) {
-			return {
-				color: '#333333', // White
-				// Make line weight larger than the county outline
-				weight: .5,
-				fillOpacity: 0.1,
-				fillColor: '#CCCCCC',
-				// This property allows us control interactivty of layer
-				interactive: true
+			// Get basemap attributes from Leaflet Providers
+			var basemap_attributes = {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+				subdomains: 'abcd',
+				maxZoom: 19
 			};
-		}
-	})
-	countyLayer.addTo(map)
+			// requests some map tiles
+			var tiles = L.tileLayer(basemap_url, basemap_attributes);
+
+			map.addLayer(tiles);
+
+			var styles = {
+				weight: 1,
+				stroke: 1,
+				fillOpacity: .4
+			}
+
+			// add state outline
+			var countyLayer = L.geoJson(county, {
+
+				style: function (feature) {
+					return {
+						color: '#333333', // White
+						// Make line weight larger than the county outline
+						weight: .5,
+						fillOpacity: 0.1,
+						fillColor: '#CCCCCC',
+						// This property allows us control interactivty of layer
+						interactive: true
+					};
+				}
+			})
+			countyLayer.addTo(map)
 
 			// add Open lands
 			var open = L.geoJson(bounds, {
@@ -242,9 +242,9 @@
 					});
 
 					//	 create template literal for tooltip  
-					popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b>`
+					popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b></p>`;
 
-					layer.bindTooltip(popup)
+					layer.bindPopup(popup)
 				}
 			}).addTo(map);
 
@@ -291,10 +291,10 @@
 						});
 					});
 
-					//   create template literal for tooltip
-					var popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b><br>${feature.properties.ResType}</a></p>`;
+					//   create template literal for popup
+					var popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b><br>${feature.properties.ResType}<br>${feature.properties.Links}<br>${feature.properties.Links2}</a></p>`;
 	
-				layer.bindTooltip(popup)
+				layer.bindPopup(popup)
 					}
 			}).addTo(map);
 
@@ -339,14 +339,14 @@
 						});
 					});
 
-					//	 create template literal for tooltip  
+					//	 create template literal for popup  
 					popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b>`
 
-					layer.bindTooltip(popup)
+					layer.bindPopup(popup)
 				}
 			}).addTo(map);
 
-			// add MCP layer for hard closure
+			// add layer for hard closure
 			var closed = L.geoJson(bounds, {
 				pointToLayer: function (feature, latlng) {
 					return feature
@@ -386,15 +386,14 @@
 						});
 					});
 
-					//	 create template literal for tooltip  
+					//	 create template literal for popup  
 					popup = `<b>${feature.properties.SITE_NAME}</b><br>Status: <b>${feature.properties.ClosStat}</b>`
 
-					layer.bindTooltip(popup)
+					layer.bindPopup(popup)
 				}
 			}).addTo(map);
-
+					
 </script>
-
-  
 </body>
+
 </html>
